@@ -62,6 +62,7 @@ class KMeans(object):
                     centers_new[i] = np.mean(data[self.clusters == i], axis=0)
                 counter+=1
         self.centroids = centers_new
+        return self.clusters, self.centroids
 
     def plot(self, data, color_cluster):
         for i in range(self.n):
@@ -82,5 +83,5 @@ if __name__ == "__main__":
     data = np.concatenate((data_1, data_2, data_3), axis = 0)
     
     kmeans = KMeans(n_clusters=3)
-    labels = kmeans.fit(data)
+    labels, centroids = kmeans.fit(data)
     kmeans.plot(data, ["green", "yellow", "red"])
